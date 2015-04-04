@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.android.ioesp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ioESP</name>
+    <description>
+        ESP8266 io control.
+    </description>
+    <author email="max30012540@hotmail.com" href="http://www.host-1gb.com/">
+        Host-1gb Group
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>
