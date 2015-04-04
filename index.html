@@ -7,9 +7,11 @@
 <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script>
-var JSFile = ['cordova.js', 'js/jquery-1.11.2.min.js', 'js/jquery.touchSwipe.min.js', 'js/app.js'];
+var JSFile = ['cordova.js', 'cordovaWifiInfo.js', 'js/jquery-1.11.2.min.js', 'js/jquery.touchSwipe.min.js', 'js/app.js'];
 for (i = 0; i<JSFile.length;i++)
 	document.write('<script src="' + JSFile[i] + '"><\/script>');
+
+console.log(window.wifi);
 </script>
 </head>
 
