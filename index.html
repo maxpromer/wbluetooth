@@ -32,6 +32,7 @@ $(document).ready(function(e) {
 		devices.forEach(function(device) {
 			html += "<option value=\"" + device.address + "\">" + device.name + "<\/option>";
 		});
+		window.alert(html);
 		$("#select-dv").html(html);
 	}, function() {
 		window.alert("List device error.");
