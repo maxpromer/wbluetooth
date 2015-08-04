@@ -9,7 +9,7 @@
 <script src="js/jquery-1.11.2.min.js"></script>
 <script>
 var connect = false;
-var bluetoothSerial = cordova.require('bluetoothSerial');
+// var bluetoothSerial = cordova.require('bluetoothSerial');
 
 $(document).ready(function(e) {
     $("#connect").click(function(e) {
@@ -18,14 +18,14 @@ $(document).ready(function(e) {
 			window.alert("Select Devices");
 			return;
 		}
-		bluetoothSerial.connect(macid, function() {
+		/* bluetoothSerial.connect(macid, function() {
 			window.alert("Connect OK.");
 		}, function() {
 			window.alert("Connect error !");
-		});
+		}); */
     });
 	
-	bluetoothSerial.list(function(devices) {
+	/* bluetoothSerial.list(function(devices) {
 		var html = "";
 		devices.forEach(function(device) {
 			html += "<option value=\"" + device.address + "\">" + device.name + "<\/option>";
@@ -33,7 +33,7 @@ $(document).ready(function(e) {
 		$("#select-dv").html(html);
 	}, function() {
 		window.alert("List device error.");
-	});
+	}); */
 });
 </script>
 </head>
