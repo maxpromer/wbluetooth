@@ -12,7 +12,11 @@
 var connect = false;
 // var bluetoothSerial = cordova.require('bluetoothSerial');
 
-$(document).ready(function(e) {
+function onLoad() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+function onDeviceReady() {
     $("#connect").click(function(e) {
         var macAddress = $("#select-dv").val();
 		if (macAddress==0) {
@@ -37,11 +41,11 @@ $(document).ready(function(e) {
 	}, function() {
 		window.alert("List device error.");
 	}, "BluetoothSerial", "list", []);
-});
+};
 </script>
 </head>
 
-<body>
+<body onLoad="onLoad()">
 <header>
   <h1 id="title">wBluetooth</h1>
 </header>
