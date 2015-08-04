@@ -7,11 +7,9 @@
 <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script>
-var JSFile = ['cordova.js', 'cordovaWifiInfo.js', 'js/jquery-1.11.2.min.js', 'js/jquery.touchSwipe.min.js', 'js/app.js'];
+var JSFile = ['cordova.js', 'js/jquery-1.11.2.min.js', 'js/jquery.touchSwipe.min.js', 'js/app.js'];
 for (i = 0; i<JSFile.length;i++)
 	document.write('<script src="' + JSFile[i] + '"><\/script>');
-
-console.log(window.wifi);
 </script>
 </head>
 
@@ -45,31 +43,15 @@ console.log(window.wifi);
 </article>
 <article data-type="page" data-page="manage" data-title="Manage" data-icon-right="md,md-add,new-io">
   <ul class="list-io" id="edit-list">
-    <!-- <li data-id="3">
-      <div class="name">Center</div>
-      <div class="right-icon manage-icon-box">
-        <span class="edit">
-          <i class="md md-mode-edit"></i>
-        </span>
-        <span class="remove">
-          <i class="md md-close"></i>
-        </span>
-      </div>
-    </li> -->
+
   </ul>
 </article>
 <article data-type="page" data-page="settings" data-title="Settings">
   <div class="list-title">On open app</div>
   <form class="form-settings">
-    <div>
-      <label>Status updates</label>
-      <div class="right-box">
-        <div class="switch">
-          <span class="back"></span>
-          <input type="checkbox" class="switch-input">
-          <span class="h"></span>
-        </div>
-      </div>
+    <div class="ipedit-popup">
+      <label>ESP2866 IP address</label>
+      <div class="sub-text">192.168.4.1</div>
     </div>
   </form>
 </article>
@@ -91,14 +73,23 @@ console.log(window.wifi);
     <h1 id="title">Edit</h1>
     <span class="icon-right"><i class="md md-check Edit-Save"></i></span>
   </header>
-  <form class="editor-form">
+  <form class="editor-form" id="edit-form">
     <div>
       <label>Name</label>
       <input type="text" id="edit-name" required>
     </div>
     <div>
-      <label>GPIO Pin (1-8)</label>
-      <input type="number" id="edit-pin" pattern="{1,8}" required>
+      <label>GPIO Pin</label>
+      <select id="edit-pin" class="sty-select">
+        <option value="1">GPIO2</option>
+        <option value="2">GPIO4</option>
+        <option value="3">GPIO5</option>
+        <option value="4">GPIO12</option>
+        <option value="5">GPIO13</option>
+        <option value="6">GPIO14</option>
+        <option value="7">GPIO15</option>
+        <option value="8">GPIO16</option>
+      </select>
     </div>
     <input type="hidden" id="edit-id" value="0">
   </form>
@@ -116,10 +107,43 @@ console.log(window.wifi);
       <input type="text" id="new-name" required>
     </div>
     <div>
-      <label>GPIO Pin (1-8)</label>
-      <input type="number" id="new-pin" pattern="{1,8}" required>
+      <label>GPIO Pin</label>
+      <select id="new-pin" class="sty-select">
+        <option value="1">GPIO2</option>
+        <option value="2">GPIO4</option>
+        <option value="3">GPIO5</option>
+        <option value="4">GPIO12</option>
+        <option value="5">GPIO13</option>
+        <option value="6">GPIO14</option>
+        <option value="7">GPIO15</option>
+        <option value="8">GPIO16</option>
+      </select>
     </div>
   </form>
+</div>
+
+<!-- Popup -->
+<div class="popup" id="edit-ip">
+  <header>
+    <h2>ESP2866 IP address</h2>
+  </header>
+  <article>
+    <form class="editor-form" id="editip-form">
+      <div>
+        <input type="text" id="ip-address" placeholder="IP address" required>
+      </div>
+    </form>
+  </article>
+  <footer>
+    <button id="cancel">CANCEL</button>
+    <button id="ok">OK</button>
+  </footer>
+</div>
+
+<div class="page-loading">
+  <div class="bar">
+    <div></div>
+  </div>
 </div>
 </body>
 </html>
