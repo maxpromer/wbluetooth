@@ -5,11 +5,8 @@
 <title>wBluetooth</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/style.css">
-<script>
-var JSFile = ['cordova.js', 'js/jquery-1.11.2.min.js'];
-for (i = 0; i<JSFile.length;i++)
-	document.write('<script src="' + JSFile[i] + '"><\/script>');
-</script>
+<script src="cordova.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
 <script>
 var connect = false;
 var bluetoothSerial = cordova.require('bluetoothSerial');
@@ -33,7 +30,7 @@ $(document).ready(function(e) {
 		devices.forEach(function(device) {
 			html += "<option value=\"" + device.address + "\">" + device.name + "<\/option>";
 		});
-		$("#select").html(html);
+		$("#select-dv").html(html);
 	}, function() {
 		window.alert("List device error.");
 	});
