@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <title>wBluetooth</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script src="cordova.js"></script>
-<script src="bluetoothSerial.js"></script>
 <script src="js/jquery-1.11.2.min.js"></script>
 <script>
 var connect = false;
@@ -34,12 +34,14 @@ function onDeviceReady() {
 	
 	$("#on-off").click(function(e) {
         cordova.exec(function() {
-			if (data=="00\n") data = "11\n";
-			else data = "00\n";
+			data = (data=="00\n" ? "11\n" : "00\n");
+			$("#on-off").attr("src", (data=="00\n" ? "img/lamp-off.png" : "img/lamp-on.png"));
 			cordova.exec(function() {
 				// OK
 			}, function() {
 				window.alert("Error write");
+				data = (data=="00\n" ? "11\n" : "00\n");
+				$("#on-off").attr("src", (data=="00\n" ? "img/lamp-off.png" : "img/lamp-on.png"));
 			}, "BluetoothSerial", "write", [data]);
 		}, function() {
 			window.alert("Not connect");
@@ -51,7 +53,8 @@ function onDeviceReady() {
 		devices.forEach(function(device) {
 			html += "<option value=\"" + device.address + "\">" + device.name + "<\/option>";
 		});
-		$("#select-dv").html(html);
+		if (html!="")
+			$("#select-dv").html(html);
 	}, function() {
 		window.alert("List device error.");
 	}, "BluetoothSerial", "list", []);
@@ -69,8 +72,8 @@ function onDeviceReady() {
       <option value="0">Devices...</option>
     </select>
   </div>
-  <button id="connect">Connect</button>
+  <button id="connect"><i class="fa fa-plug"></i></button>
 </div>
-<div style="text-align: center;"><button id="on-off">ON / OFF</button></div>
+<div style="text-align: center;"><img id="on-off" src="img/lamp-on.png"></div>
 </body>
 </html>
